@@ -45,7 +45,7 @@ const css = `
   .legend-dot { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
 `;
 
-function getWeeks(startDate, numWeeks) {
+function getWeeks(startDate: Date, numWeeks: number) {
   const weeks = [], d = new Date(startDate);
   d.setDate(d.getDate() - d.getDay() + 1);
   for (let i = 0; i < numWeeks; i++) {
@@ -56,9 +56,9 @@ function getWeeks(startDate, numWeeks) {
   }
   return weeks;
 }
-function dateToDay(date) { return Math.floor(date / 86400000); }
-function overlap(a, b) { return a.start <= b.end && a.end >= b.start; }
-function computeLoad(resource, weeks, assignments) {
+function dateToDay(date: Date, origin: Date): number { return Math.floor(date / 86400000); }
+function overlap(a: {start: Date, end: Date}, b: {start: Date, end: Date}): boolean { return a.start <= b.end && a.end >= b.start; }
+function computeLoad(resource: any, weeks: any[], assignments: any[]) {
   return weeks.map(w => assignments.filter(a => a.resourceId === resource.id && !a.isLeave && overlap({ start: new Date(a.start), end: new Date(a.end) }, w)).length);
 }
 function uid() { return Math.random().toString(36).slice(2,8); }
