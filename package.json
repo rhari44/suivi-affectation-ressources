@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "electron": "electron .",
+    "dist-win": "electron-builder --win"
   },
   "dependencies": {
     "react": "^19.2.7",
@@ -20,6 +22,23 @@
     "@vitejs/plugin-react": "^6.0.2",
     "oxlint": "^1.69.0",
     "typescript": "~6.0.2",
-    "vite": "^8.0.16"
+    "vite": "^8.0.16",
+    "electron": "^37.2.0",
+    "electron-builder": "^26.0.12"
+  },
+  "main": "electron.cjs",
+  "build": {
+    "appId": "com.hari.resourcegantt",
+    "productName": "Resource Gantt",
+    "files": [
+      "dist/**/*",
+      "electron.cjs"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis"
+    }
   }
 }
