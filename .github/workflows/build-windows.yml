@@ -17,6 +17,8 @@ jobs:
       - run: npm install
 
       - run: npm run build
+        env:
+          CI: false
 
       - run: npm run dist-win
 
