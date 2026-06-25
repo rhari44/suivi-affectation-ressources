@@ -30,6 +30,7 @@
   "build": {
     "appId": "com.hari.resourcegantt",
     "productName": "Resource Gantt",
+    "publish": null,
     "files": [
       "dist/**/*",
       "electron.cjs"
