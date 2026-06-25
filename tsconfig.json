@@ -6,7 +6,7 @@
   ],
   "compilerOptions": {
     "noImplicitAny": false,
-    "strict": false
-  },
-  "noUnusedLocals": false
+    "strict": false,
+    "noUnusedLocals": false
+  }
 }
