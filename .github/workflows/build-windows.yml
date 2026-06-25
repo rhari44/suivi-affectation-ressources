@@ -1,14 +1,21 @@
 name: Build Windows EXE
-
 on:
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: windows-latest
-
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Verify files
+        run: |
+          echo "=== tsconfig.app.json ==="
+          type tsconfig.app.json
+          echo "=== App.tsx line 1 ==="
+          powershell "Get-Content src/App.tsx | Select-Object -First 5"
 
       - uses: actions/setup-node@v4
         with:
